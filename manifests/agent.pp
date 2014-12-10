@@ -28,7 +28,12 @@ define consul::agent(
 	}
 
 	if $join {
-		$join_opt = " -retry-join=$join"
+		if $join =~ /:.*:/ {
+			# Fuck you, Go, and your retro-90s style IPv6 address formats
+			$join_opt = " -retry-join='[${join}]'"
+		} else {
+			$join_opt = " -retry-join=$join"
+		}
 	}
 
 	daemontools::service { "consul-${name}":
