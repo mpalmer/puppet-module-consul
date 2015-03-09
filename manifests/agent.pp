@@ -30,7 +30,7 @@ define consul::agent(
 	if $join {
 		if $join =~ /:.*:/ {
 			# Fuck you, Go, and your retro-90s style IPv6 address formats
-			$join_opt = " -retry-join='[${join}]'"
+			$join_opt = " -retry-join='[${join}]:8301'"
 		} else {
 			$join_opt = " -retry-join=$join"
 		}
