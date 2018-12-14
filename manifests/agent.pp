@@ -10,7 +10,7 @@ define consul::agent(
 
 	file { "/var/local/consul/${name}":
 		ensure => directory,
-		mode   => 0700,
+		mode   => "0700",
 		owner  => "consul",
 		group  => "consul",
 	}

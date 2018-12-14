@@ -1,7 +1,7 @@
 class consul::install {
 	file { "/var/local/consul":
 		ensure => directory,
-		mode   => 0730,
+		mode   => "0730",
 		owner  => "root",
 		group  => "consul",
 	}
@@ -13,7 +13,7 @@ class consul::install {
 	file { "/usr/local/bin/install-consul":
 		ensure => file,
 		source => "puppet:///modules/consul/usr/local/bin/install-consul",
-		mode   => 0555,
+		mode   => "0555",
 		owner  => "root",
 		group  => "root",
 	}
